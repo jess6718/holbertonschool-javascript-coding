@@ -7,16 +7,13 @@ request(url, function (error, response, body) {
     console.error(error);
   }
   const bodyObj = JSON.parse(body);
-  const completedObj = {};
+  const counts = {};
   for (const task of bodyObj) {
 
     if (task.completed === true) {
       const key = task.userId.toString();
-      if (!completedObj[key]) {
-        completedObj[key] = 0;
-      }
-      completedObj[key]++;
+      counts[key] = (counts[key] || 0) + 1;
     }
   }
-  console.log(completedObj);
+  console.log(counts);
 });
