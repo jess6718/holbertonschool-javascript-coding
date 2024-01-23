@@ -12,13 +12,10 @@ request(url, function (error, response, body) {
 
     if (task.completed === true) {
       const key = task.userId.toString();
+      // Current value false assing 0, and increment 1
       counts[key] = (counts[key] || 0) + 1;
     }
   }
-  // Sort the counts object by keys (user IDs)
-  const sortedCounts =
-  Object.fromEntries(Object.entries(counts).sort((a, b) =>
-  parseInt(a[0]) - parseInt(b[0])));
 
-  console.log(sortedCounts);
+  console.log(counts);
 });
