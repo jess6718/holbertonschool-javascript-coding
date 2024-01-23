@@ -15,5 +15,10 @@ request(url, function (error, response, body) {
       counts[key] = (counts[key] || 0) + 1;
     }
   }
-  console.log(counts);
+  // Sort the counts object by keys (user IDs)
+  const sortedCounts =
+  Object.fromEntries(Object.entries(counts).sort((a, b) =>
+  parseInt(a[0]) - parseInt(b[0])));
+
+  console.log(sortedCounts);
 });
