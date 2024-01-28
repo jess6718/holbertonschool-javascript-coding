@@ -9,7 +9,6 @@ request(url, function (error, response, body) {
   const bodyObj = JSON.parse(body);
   const counts = {};
   for (const task of bodyObj) {
-
     if (task.completed === true) {
       const key = task.userId.toString();
       // Current value false assing 0, and increment 1
