@@ -17,14 +17,14 @@ class StudentsController {
       const { major } = req.params;
       if (major !== 'CS' && major !== 'SWE') {
         res.status(500).send('Major parameter must be CS or SWE');
-        res.end();
+        return res.end();
       }
       const studentData = await readDatabase(process.argv[2]);
-      res.status(200).send(
+      return res.status(200).send(
         major === 'CS' ? `List: ${studentData.CS.join(', ')}` : `List: ${studentData.SWE.join(', ')}`,
       );
     } catch (error) {
-      res.status(500).send(error.message);
+      return res.status(500).send(error.message);
     }
   }
 }
